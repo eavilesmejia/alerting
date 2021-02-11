@@ -186,7 +186,7 @@ class MonitorRunner(
             loadCurrentAlerts(monitor)
         } catch (e: Exception) {
             // We can't save ERROR alerts to the index here as we don't know if there are existing ACTIVE alerts
-            val id = if (monitor.id.trim().isEmpty()) "_na_" else monitor.id
+            val id = if (monitor.id.trim().isBlank()) "_na_" else monitor.id
             logger.error("Error loading alerts for monitor: $id", e)
             return monitorResult.copy(error = e)
         }

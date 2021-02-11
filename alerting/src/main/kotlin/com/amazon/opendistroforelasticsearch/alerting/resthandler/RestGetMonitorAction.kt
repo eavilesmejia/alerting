@@ -61,7 +61,7 @@ class RestGetMonitorAction : BaseRestHandler() {
 
     override fun prepareRequest(request: RestRequest, client: NodeClient): RestChannelConsumer {
         val monitorId = request.param("monitorID")
-        if (monitorId == null || monitorId.isEmpty()) {
+        if (monitorId == null || monitorId.isBlank()) {
             throw IllegalArgumentException("missing id")
         }
         val getRequest = GetRequest(SCHEDULED_JOBS_INDEX, monitorId)
